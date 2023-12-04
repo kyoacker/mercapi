@@ -10,17 +10,19 @@ logging.getLogger().setLevel(logging.DEBUG)
 
 async def main():
     m = Mercapi()
-    results = await m.search('sharpnel')
+    # results = await m.search('sharpnel')
 
-    print(f'Found {results.meta.num_found} results')
-    for item in results.items:
-        print(f'Name: {item.name}\nPrice: {item.price}\n')
+    # print(f'Found {results.meta.num_found} results')
+    # for item in results.items:
+    #     print(f'Name: {item.name}\nPrice: {item.price}\n')
 
-    item = results.items[0]
-    full_item = await item.full_item()
-    print(full_item.description)
+    # item = results.items[0]
+    # full_item = await item.full_item()
+    # print(full_item.description)
 
-    item = await m.item('m90925725213')
+    item = await m.item('m65074398110')
+    print(item)
+    print(item.item_brand.sub_name)
     print(item.description)
 
 

@@ -14,6 +14,7 @@ from mercapi.models.item.data import (
     ShippingDuration,
     ShippingClass,
     Comment,
+    Brand,
 )
 from mercapi.util.errors import ParseAPIResponseError
 from mercapi.models.base import ResponseModel
@@ -120,6 +121,11 @@ mapping_definitions: Dict[Type[ResponseModel], ResponseMappingDefinition] = {
                 "item_condition",
                 "item_condition",
                 Extractors.get_as_model("item_condition", ItemCondition),
+            ),
+            ResponseProperty(
+                "item_brand",
+                "item_brand",
+                Extractors.get_as_model("item_brand", Brand),
             ),
             ResponseProperty(
                 "colors",
@@ -288,6 +294,14 @@ mapping_definitions: Dict[Type[ResponseModel], ResponseMappingDefinition] = {
         required_properties=[
             ResponseProperty("id", "id_", Extractors.get("id")),
             ResponseProperty("name", "name", Extractors.get("name")),
+        ],
+        optional_properties=[],
+    ),
+    Brand: R(
+        required_properties=[
+            ResponseProperty("id", "id_", Extractors.get("id")),
+            ResponseProperty("name", "name", Extractors.get("name")),
+            ResponseProperty("sub_name", "sub_name", Extractors.get("sub_name")),
         ],
         optional_properties=[],
     ),

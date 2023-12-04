@@ -96,3 +96,9 @@ class Comment(ResponseModel):
     message: str
     user: User
     created: datetime
+
+@dataclass
+class Brand(ResponseModel):
+    id_: int
+    name: str
+    sub_name: str

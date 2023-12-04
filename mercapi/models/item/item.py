@@ -14,6 +14,7 @@ from mercapi.models.item.data import (
     Color,
     Seller,
     Comment,
+    Brand,
 )
 
 
@@ -34,6 +35,7 @@ class Item(ResponseModel):
     thumbnails: List[str]
     item_category: ItemCategorySummary
     item_condition: ItemCondition
+    item_brand: Brand
     colors: List[Color]
     shipping_payer: ShippingPayer
     shipping_method: ShippingMethod
