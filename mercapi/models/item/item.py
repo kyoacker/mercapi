@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import List
 
 from mercapi.models.base import ResponseModel
-from mercapi.models.common import ItemCategorySummary
+from mercapi.models.common import ItemCategorySummary, ItemCategoryNtiersSummary
 from mercapi.models.item.data import (
     ItemCondition,
     ShippingFromArea,
@@ -34,6 +34,7 @@ class Item(ResponseModel):
     photo_paths: List[str]
     thumbnails: List[str]
     item_category: ItemCategorySummary
+    item_category_ntiers: ItemCategoryNtiersSummary
     item_condition: ItemCondition
     item_brand: Brand
     colors: List[Color]

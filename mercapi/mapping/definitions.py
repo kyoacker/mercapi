@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import NamedTuple, List, Dict, TypeVar, Type, Any, Optional, Callable
 
 from mercapi.models import Item, Items, Profile, SearchResults, SearchResultItem
-from mercapi.models.common import ItemCategory, ItemCategorySummary
+from mercapi.models.common import ItemCategory, ItemCategorySummary, ItemCategoryNtiersSummary
 from mercapi.models.item.data import (
     Seller,
     ItemCondition,
@@ -116,6 +116,11 @@ mapping_definitions: Dict[Type[ResponseModel], ResponseMappingDefinition] = {
                 "item_category",
                 "item_category",
                 Extractors.get_as_model("item_category", ItemCategorySummary),
+            ),
+            ResponseProperty(
+                "item_category_ntiers",
+                "item_category_ntiers",
+                Extractors.get_as_model("item_category_ntiers", ItemCategoryNtiersSummary),
             ),
             ResponseProperty(
                 "item_condition",
@@ -432,6 +437,11 @@ mapping_definitions: Dict[Type[ResponseModel], ResponseMappingDefinition] = {
                 Extractors.get_as_model("item_category", ItemCategorySummary),
             ),
             ResponseProperty(
+                "item_category_ntiers",
+                "item_category_ntiers",
+                Extractors.get_as_model("item_category_ntiers", ItemCategoryNtiersSummary),
+            ),
+            ResponseProperty(
                 "shipping_from_area",
                 "shipping_from_area",
                 Extractors.get_as_model("shipping_from_area", ShippingFromArea),
@@ -628,6 +638,37 @@ mapping_definitions: Dict[Type[ResponseModel], ResponseMappingDefinition] = {
         ],
     ),
     ItemCategorySummary: R(
+        required_properties=[
+            ResponseProperty("id", "id_", Extractors.get("id")),
+            ResponseProperty("name", "name", Extractors.get("name")),
+        ],
+        optional_properties=[
+            ResponseProperty(
+                "display_order", "display_order", Extractors.get("display_order")
+            ),
+            ResponseProperty(
+                "parent_category_id",
+                "parent_category_id",
+                Extractors.get("parent_category_id"),
+            ),
+            ResponseProperty(
+                "parent_category_name",
+                "parent_category_name",
+                Extractors.get("parent_category_name"),
+            ),
+            ResponseProperty(
+                "root_category_id",
+                "root_category_id",
+                Extractors.get("root_category_id"),
+            ),
+            ResponseProperty(
+                "root_category_name",
+                "root_category_name",
+                Extractors.get("root_category_name"),
+            ),
+        ],
+    ),
+    ItemCategoryNtiersSummary: R(
         required_properties=[
             ResponseProperty("id", "id_", Extractors.get("id")),
             ResponseProperty("name", "name", Extractors.get("name")),

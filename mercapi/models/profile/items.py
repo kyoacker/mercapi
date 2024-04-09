@@ -4,7 +4,7 @@ from typing import List
 
 from mercapi.models import Item
 from mercapi.models.base import ResponseModel
-from mercapi.models.common import ItemCategorySummary
+from mercapi.models.common import ItemCategorySummary, ItemCategoryNtiersSummary
 from mercapi.models.item.data import ShippingFromArea
 
 
@@ -22,6 +22,7 @@ class SellerItem(ResponseModel):
     created: datetime
     updated: datetime
     item_category: ItemCategorySummary
+    item_category_ntiers: ItemCategoryNtiersSummary
     shipping_from_area: ShippingFromArea
 
     async def full_item(self) -> Item:
